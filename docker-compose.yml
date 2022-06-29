@@ -11,27 +11,19 @@ services:
       - django_data_volume:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: "haljion11"
-  api:
-    container_name: api
-    build: ./src/django
-    command: python manage.py runserver 0.0.0.0:8000
+  webapi:
+    container_name: webapi
+    build:
+      context: Dockerfiles
+      dockerfile: dev
+    # command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./src/django:/src
+      - .:/var/www/src
     tty: true
     ports:
       - 8888:8000
     links:
       - db:db
-  front:
-    container_name: react
-    build: ./src/react
-    volumes:
-      - ./src/react:/src
-    tty: true
-    ports:
-      - 3000:3000
-    links:
-      - api:api
 volumes:
   django_data_volume:
     
