@@ -54,3 +54,17 @@ docker container exec -it webapi bash
 ```
 pip install -r requirements.txt
 ```
+
+```
+python manage.py migrate
+python manage.py createsuperuser
+
+ユーザー名 (leave blank to use 'root'): (blank)
+メールアドレス: (blank)
+Password:P@ssword
+```
+DBデータ投入
+```
+# /var/www/src
+python -c "import scripts.csv_to_db; scripts.csv_to_db.insert_all_data()"
+```
