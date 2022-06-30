@@ -45,6 +45,15 @@ def insert_poke_data():
 
 
 def insert_waza_data():
+    # 選択なし 用のレコード
+    waza_non = Waza()
+    
+    waza_non.name = "------"
+    waza_non.waza_type = "なし"
+    waza_non.various = 0
+    
+    waza_non.save()
+    
     with open("webapi/static/webapi/csv/wazadata.csv", encoding="utf-8") as f:
         reader = csv.reader(f)
         for row in reader:
@@ -77,6 +86,13 @@ def insert_personality_data():
 
 
 def insert_item_data():
+    item_non = Item()
+    
+    item_non.name = "------"
+    item_non.image = "non.png"
+
+    item_non.save()
+    
     with open("webapi/static/webapi/csv/item_data.csv", encoding="utf-8") as f:
         reader = csv.reader(f)
         for row in reader:
