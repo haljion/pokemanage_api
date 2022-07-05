@@ -42,6 +42,11 @@ DB作成
 ```
 CREATE DATABASE pokemanage;
 CREATE USER admin WITH PASSWORD 'password';
+ALTER ROLE admin SET client_encoding TO 'utf8';
+ALTER ROLE admin SET default_transaction_isolation TO 'read committed';
+ALTER ROLE admin SET timezone TO 'UTC+9';
+GRANT ALL PRIVILEGES ON DATABASE djangodb TO django;
+
 GRANT ALL PRIVILEGES ON DATABASE pokemanage TO admin;
 ```
 
