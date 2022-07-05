@@ -59,7 +59,7 @@ MIDDLEWARE = [
 
 # アクセス許可
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
+    'https://pokemanage.com/',
 )
 
 ROOT_URLCONF = 'pokemanage_api.urls'
