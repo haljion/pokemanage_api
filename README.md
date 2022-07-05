@@ -6,9 +6,6 @@ tree
 
 ## API
 
-※token free  
-→headerに key: Authorization, value: JWT [access token] が必要かどうか
-
 | url |  | method | api | param | return | token free |
 | - | - | - | - | - | - | - |
 | /api | - | - | 自作API |  | - | - |
