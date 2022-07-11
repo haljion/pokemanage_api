@@ -14,26 +14,14 @@ from pathlib import Path
 import os
 import environ
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
-
-ALLOWED_HOSTS = [
-    'localhost',
-    '35.79.89.205',
-    'apiserver.pokemanage.com',]
-
-# Application definition
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,6 +51,7 @@ MIDDLEWARE = [
 # アクセス許可
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
+    'https://dh72dk3kg2s9w.cloudfront.net/',
     'https://pokemanage.com/',
 )
 
@@ -90,15 +79,9 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': env.db(),
 }
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
