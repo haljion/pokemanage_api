@@ -28,7 +28,10 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['*'] # dev only
+ALLOWED_HOSTS = [
+    'localhost',
+    '35.79.89.205',
+    'apiserver.pokemanage.com',]
 
 # Application definition
 
@@ -39,15 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webapi.apps.WebapiConfig', #メインアプリケーション
-    'corsheaders', #cors
-    'rest_framework',# drf
+    'webapi.apps.WebapiConfig',
+    'corsheaders',
+    'rest_framework',
     'django_filters',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware', # cors topに置く必要あり
-    'django.middleware.common.CommonMiddleware', # cors
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,6 +62,7 @@ MIDDLEWARE = [
 
 # アクセス許可
 CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
     'https://pokemanage.com/',
 )
 
@@ -82,9 +86,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pokemanage_api.wsgi.application'
 
-# 追記
 REST_FRAMEWORK = {
-    # Django-filters
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
