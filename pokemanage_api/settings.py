@@ -52,7 +52,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'https://dh72dk3kg2s9w.cloudfront.net/',
-    'https://pokemanage.com/',
+    'https://www.pokemanage.com/',
 )
 
 ROOT_URLCONF = 'pokemanage_api.urls'
